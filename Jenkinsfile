@@ -7,10 +7,10 @@ pipeline {
     }
 
     environment {
-        APP_NAME       = "express-login-ui"
-        IMAGE_NAME     = "nileshsun/express-login-ui"
-        CONTAINER_PORT = "3000"
-        HOST_PORT      = "3000"
+        APP_NAME       = "express-login-tempui-cicd2"
+        IMAGE_NAME     = "prakharvishwa80/express-login-tempui-cicd2"
+        CONTAINER_PORT = "4000"
+        HOST_PORT      = "4000"
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
         stage('Clone Source') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/nilesh-g/express-login-ui'
+                url: 'https://github.com/PrakharVishwakarma/express-login-tempui-cicd2'
             }
         }
 
@@ -46,7 +46,7 @@ pipeline {
         stage('Docker Login') {
 
             environment {
-                DOCKER_CREDS = credentials('DockerHubCreds')
+                DOCKER_CREDS = credentials('dockerhub-creds')
             }
 
             steps {
